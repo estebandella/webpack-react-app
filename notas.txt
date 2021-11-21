@@ -1,0 +1,98 @@
+// 01 - Inicializar una aplicaion en Node.js:
+//npm init -y
+
+
+// 02 - instalo webpack:
+//npm install webpack webpack-cli --save-dev
+
+//Corremos WEBPACK desde el "build" de "package.json"
+//npm run build
+
+//03 - Creamos un SCRIPTS: En "package.json"
+// "scripts": {
+//     "build": "webpack --mode=development",
+
+//04 - EJECUTAMOS WEBPACK desde el "build" de "package.json"
+// esto crea carpteta "dist" y exporta el paquete EMPAQUETADO con las relacioens en un unico archivo "main.js"
+//npm run build
+
+//05 - EJECUTAMOS LA APLILCACION  ***************************
+//node dist/main.js
+//./node_modules/.bin/webpack 
+// esto crea carpteta "dist" y exporta el paquete con las relacioens
+
+//06 - (configuracion de webpack) GUARDE TODO EN OTRA CAPETA
+    // Configuro WEBPACK para que tolo lo exporte a la carpeta "build".
+    // Si no hago esto, por defecto envia todo a la carpeta "dist"
+    // Luego puedo borrar la carpeta dis que no la voy a usar.
+    // 1 - Creo "webpack.config.js" y ahi configuro la SALIDA de archivos de WEBPACK
+
+//07 - INSTALAMOS REACT
+//npm install react react-dom -E
+
+//08 - (babel-loader)
+1) Configuramos BABEL (Loader)
+// Este loader es una libreria para que WEBPACK pueda interpretar distintos codigos.
+// Se incorpora desde la configuracion de WEBPACK en "webpack.config.js"
+// En "webpack.config.js" decimos que fonfiguracion de babel loader vamos a usar
+// 2) instalamos babel loader....
+npm install @babel/core babel-loader @babel/preset-react --save-dev
+
+// 3) Reorganizamos (aplanamos) el codigo en "webpack.config.js"
+
+
+09 - Creo un archivo index.html en la carpeta build
+	Corro un servidor local con : npx servor build
+
+10 - Creamos un archivo HTML index.html en la carpeta build.
+
+11 - (style-loader y css-loader) Creamos un archivo CSS style.css en la carpeta src.
+	NO lo importamos desde HTML, lo hacemos desde el punto de arranque index.js
+	Para que WEBPACK interprete CSS hay que instalar un loader en webpack.config.js
+	Luego instalarlos....
+	npm install style-loader css-loader --save-dev
+
+12 - PLUGING (html-webpack-plugin) 
+	Para no tener que estar todo el tiempo editando el index.html
+	Agregamos un plugin a WEBPACK par agregar la funcionalidad de que me genere un index.html automaticamente
+	Intlamos el plugin....
+	npm install html-webpack-plugin --save-dev
+
+	lo llamamos en "webpack.config.js" y tambien llamamos desde ahi el template del index.html guardado en src, luego me genera automaticamente el index.htm en la carpeta build
+
+13 - ENTORNO DE DESARROLLO WEBPACK (webpack-dev-server)
+	Para no tener que estar haciendo para cada cambio el "npm run build" agregamos un SCRIPTS en package.json ---- "dev":"webpack serve --mode=development",
+	Luego instalamos ...
+	npm install -D webpack-dev-server
+
+
+
+// INSTALACIONES ***************************************************************
+npm init -y
+npm install webpack webpack-cli --save-dev
+npm install react react-dom -E
+npm install @babel/core babel-loader @babel/preset-react --save-dev
+npm install style-loader css-loader --save-dev
+npm install html-webpack-plugin --save-dev
+npm install -D webpack-dev-server
+
+***************************************************************
+
+
+//ejeplo 01: IMPORTO EL MODULO sayHi
+// import {sayHi} from './utils'
+
+// sayHi()
+
+
+
+//ejeplo 02: CREO APLLICAION CON REACT
+
+import React from 'react'
+import { ReactDOM } from 'react-dom'
+import App from '.App'
+
+ReactDOMres.render(
+    <App />,                             //este tocken dene ser interpretado por BABEL para que WEBPACK lo entienda
+    document.getElementById('root')
+    )
